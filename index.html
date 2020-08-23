@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Meta tags -->
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <meta
+      content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"
+      name="viewport"
+    />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="author" content="Patrick Tabarelli">
+    <meta name="description" content="Patrick Tabarelli - Visual Design, Web Development, Training">
+    <title>Patrick Tabarelli - Visual Design, Web Development, Training</title>
+
+    <!-- Favicon and title -->
+    <link rel="icon" href="images/icons/confluence.svg" />
+
+    <!-- Halfmoon CSS -->
+    <link href="https://cdn.jsdelivr.net/gh/halfmoonui/halfmoon@1.0.4/css/halfmoon.min.css" rel="stylesheet" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css" />     
+    
+    <!-- Animate.css -->
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css"/>
+    
+    <!-- Font Awesome-->
+    <script src="https://kit.fontawesome.com/4ee9c396b6.js" crossorigin="anonymous"></script>
+
+    <!-- Fonts -->
+
+    <!-- Roboto -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <!-- DM Serif -->
+    <link
+      href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&display=swap"
+      rel="stylesheet"
+    />
+    <!-- Baloo -->
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+Tamma+2:wght@400;500&display=swap" rel="stylesheet">  
+  </head>
+    
+  <body
+    class="with-custom-webkit-scrollbars with-custom-css-scrollbars"
+    data-dm-shortcut-enabled="true"
+    data-sidebar-shortcut-enabled="true"
+  >
+    <!-- Modals go here -->
+    <!-- Say Hi!-->
+    <div class="modal" id="sayHi" tabindex="-1" role="dialog">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <a href="#" class="btn close" role="button" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </a>
+          <!-- Confirmation -->
+          <div id="confirmation" 
+          class="alert alert-success mb-10 alert-heading d-none"></div>
+          
+
+          <!-- title -->
+          <h5 class="modal-title Roboto-Light">Hi! Feel free to get in touch</h5>
+          <!-- form -->
+          <form name="gform" id="gform" 
+          class="w-400 mw-full"
+          enctype="text/plain"
+          action="https://docs.google.com/forms/d/e/1FAIpQLSdXMuy-G3qgMAoLoAJUxSGMHg7izjp2Q6GOO9Ijgt9Q5yUMqQ/formResponse?usp=pp_url"
+          target="hidden_iframe" 
+          onsubmit="submitted=true;"
+          method="...">
+            <!-- name -->
+            <div class="input-group mb-10">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="far fa-smile"></i></span>
+              </div>
+              <input type="text" name="entry.2005620554" id="entry.2005620554"
+              class="form-control form-control-sm font-size-12" placeholder="Name - required*" required="required">
+            </div>
+            <!-- company -->
+            <div class="input-group mb-10">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="far fa-building"></i></span>
+              </div>
+              <input type="text" name="entry.440159136" id="entry.440159136"
+              class="form-control form-control-sm font-size-12" placeholder="Company">
+            </div>
+            <!-- email -->
+            <div class="input-group mb-10">
+              <div class="input-group-prepend">
+                <span class="input-group-text">@</span>
+              </div>
+              <input type="email" name="entry.1045781291" id="entry.1045781291"
+              class="form-control form-control-sm font-size-12" placeholder="E-mail - required*" required="required">
+            </div>
+            <!-- phone -->
+            <div class="input-group mb-10">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-phone-alt"></i></span>
+              </div>
+              <input type="numeric" name="entry.1166974658" id="entry.1166974658"
+              class="form-control form-control-sm font-size-12" placeholder="Phone">
+            </div>
+            <!-- text-field -->
+            <div class="input-group mb-10">
+              <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-envelope-open-text"></i></span>
+              </div>
+              <textarea type="text" name="entry.839337160" id="entry.839337160"
+              class="form-control" placeholder="Tell us about yourself - required*"
+              required="required"></textarea>
+            </div>            
+            <!-- Reset Button -->
+            <input id="resetButton" class="btn btn-secondary btn-block mb-5" type="button" value="Reset">
+            <!-- Send Button-->
+            <input class="btn btn-primary btn-block" type="submit" value="Send">
+          </form>
+          <!-- iframe (hidden) -->
+          <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {}"></iframe>
+        </div>
+      </div>
+    </div>
+
+    <!-- Page wrapper start -->
+    <div
+      class="page-wrapper with-navbar with-sidebar with-transitions"
+      data-sidebar-type="full-height overlayed-sm-and-down"
+      data-sidebar-hidden="hidden"
+    >
+      <!-- Sticky alerts (toasts), empty container -->
+      <div class="sticky-alerts"></div>
+
+      
+      
+
+      <!-- Navbar start -->
+      <nav class="navbar px-20">
+        <!-- Reference: https://www.gethalfmoon.com/docs/navbar -->
+
+        <div class="navbar-content">
+          <!-- Menu Button -->
+          <button
+            id="toggle-sidebar-btn"
+            class="btn btn-action btn-sm"
+            type="button"
+            onclick="halfmoon.toggleSidebar()"
+          >
+          <i class="fas fa-ellipsis-v" aria-hidden="true"></i>
+          </button>
+
+          <!-- Logo -->
+          <a href="index.html" class="navbar-brand ml-auto ml-sm-20">
+            <span class="Baloo pt-5">
+              patrick tabarelli
+            </span>
+            <i class="fab fa-confluence pl-10 logo-color" aria-hidden="true"></i>
+          </a>
+        </div>
+        <div class="navbar-content ml-auto">
+          <!-- Download button -->
+          <a
+            href="data/p-tabarelli-CV-2020.pdf"
+            class="btn btn-primary btn-sm hidden-sm-and-down"
+            data-toggle="tooltip"
+            data-placement="bottom"
+            data-title="Printable Version"
+            role="button"
+            download="patrick-tabarelli-CV.pdf"
+          >
+            <i class="fa fa-cloud-download mr-5" aria-hidden="true"></i>
+            Download CV
+          </a>
+          <!-- Toggle Dark Mode Button -->
+          <button
+            class="btn btn-sm btn-action ml-5"
+            type="button"
+            onclick="halfmoon.toggleDarkMode()"
+            aria-label="Toggle dark mode"
+          >
+            <!-- <i class="fa fa-moon-o" aria-hidden="true"></i> -->
+            <!-- <i class="fas fa-moon"></i> -->
+            <i class="fas fa-adjust" aria-hidden="true"></i>
+          </button>
+        </div>
+      </nav>
+      <!-- Navbar end -->
+
+      <!-- Sidebar overlay -->
+      <div class="sidebar-overlay" onclick="halfmoon.toggleSidebar()"></div>
+
+      <!-- Sidebar start -->
+      <div class="sidebar" id="sidebar">
+        <!-- Reference: https://www.gethalfmoon.com/docs/sidebar -->
+        <div class="sidebar-menu">
+          <!-- Sidebar brand -->
+          <a href="#" class="sidebar-brand">
+            <!-- Patrick Tabarelli -->
+          </a>
+        </div>
+        <!-- Sidebar content with the search box -->
+        <div class="sidebar-menu list">
+          <!-- Sidebar links and titles -->
+          <!-- Who -->
+          <h5 class="sidebar-title DMSerif-title">Who</h5>
+          <div class="sidebar-divider"></div>
+          <a href="#top" class="sidebar-link active">
+            <i class="fas fa-angle-right pr-10"></i>About Me</a>
+            <!-- What -->
+          <h5 class="sidebar-title DMSerif-title">What</h5>
+          <div class="sidebar-divider"></div>
+          <a href="#visual" class="sidebar-link">
+            <i class="fas fa-angle-right pr-10"></i>Visual Design</i></a>
+          <a href="#webdev" class="sidebar-link">
+            <i class="fas fa-angle-right pr-10"></i>Web Development</a>
+          <a href="#coding" class="sidebar-link">
+            <i class="fas fa-angle-right pr-10"></i>Coding</a>
+          <a href="#motion" class="sidebar-link">
+            <i class="fas fa-angle-right pr-10"></i>3D + Motion</a>
+          <a href="#training" class="sidebar-link">
+            <i class="fas fa-angle-right pr-10"></i>Teaching & Training</a>
+            <!-- Where -->
+          <h5 class="sidebar-title DMSerif-title">Where</h5>
+          <div class="sidebar-divider"></div>
+          <a href="#sayHi" class="sidebar-link">
+            <i class="fas fa-angle-right pr-10"></i>Contact</a>
+        </div>
+      </div>
+      <!-- Sidebar end -->
+
+      <!-- Content wrapper start -->
+      <div class="content-wrapper">
+        <div class="contentainer-fluid bg-gradient">
+
+
+          <!-- Block 1 Header-->
+          <div id="top" class="diagonal-shadow">
+            <div class="content diagonal bg-light bg-dark-light-dm">
+              
+              <!-- info cookies -->      
+              <div id="cookieAlert" class="alert alert-secondary" role="alert">
+                <button class="close" 
+                onclick="this.parentNode.classList.add('dispose')"             
+                type="button" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+                <p class="text-center font-size-12 Roboto-Light m-0">
+                  This website uses cookies to ensure you get the best experience on our website <i class="fas fa-cookie-bite"></i>
+                </p>
+              </div>
+              
+              <h1 class="content-title DMSerif animate__animated animate__fadeIn">
+                Visual Design <br />
+                Web Development <br />
+                Training
+              </h1>
+            </div>
+          </div>
+
+          <!-- Block 2 About -->
+          <div id="about" class="content">
+            <div class="row">
+              <!-- left -->
+              <div class="col-md-6">
+                <img src="images/avatar/avatar.svg" class="" alt="avatar">
+              </div>
+              <!-- right -->
+              <div class="col-md-6 text-justify Roboto-Light d-flex align-self-center">
+                <div class="content text-dark">
+                  <h2 class="card-title font-size-22 DMSerif-title text-dark">
+                    Hi, I’m Patrick! &#x1F596
+                  </h2>
+                  <p>
+                    In a 10+ years I’ve experienced a wide range of design
+                    disciplines. I’m a fast learner, able to pick up new skills
+                    and cope with different projects and roles with relative
+                    ease. I am precise and demanding. I like to develop expertise
+                    in different areas over the course of my career. <br />
+                  </p>
+                  <p>
+                    I can work remotely as well as on site.
+                  </p>
+                  <p>
+                    Feel free to get in touch by any means of communication.
+                  </p>
+                  <a href="#sayHi">
+                    <button class="btn btn-sm btn-secondary" type="button">
+                      Say Hello! 
+                    </button>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Block 3 Visual Design-->
+          <div id="visual" class="content bg-light bg-dark-light-dm mx-0 p-20 shadow border-top-transparent border-bottom">
+            <div class="row">
+
+              <!-- left -->
+              <div class="col-md-6 text-justify Roboto-Light pr-20">
+
+                <h2 class="card-title font-size-22 DMSerif-title">
+                  Visual Design &#11088
+                </h2>
+    
+                <p>
+                  I had been working for few years in the field of photographic
+                  post-production at the Science Photo Library in London (UK).
+                </p>
+                <p>
+                  Later as PA and Freelance in the art field I gained experience in graphic and editorial design, with the realization of
+                  catalogues and artist books.
+                </p>
+                <p>
+                  <ul>
+                    <li>Pen&Paper</li>
+                    <li>Vector & Raster </li>
+                    <li>Adobe Suite</li>
+                    <li>Editorial</li>
+                    <li>Brand Identity</li>
+                  </ul>        
+                </p>
+              </div>
+
+              <!-- right -->
+              <div class="col-md-6 pb-0">
+                <img style="margin-bottom:-1.4rem" class="img-fluid" src="images/visual/dany-vescovi.png" alt="">
+              </div>
+            </div>
+            <hr>
+            <!-- Icons -->
+            <div class="row d-flex justify-content-center">
+              <!-- Adobe -->
+              <svg class="icon-static" fill="#a0a0a0" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Adobe</title><path d="M13.966 22.624l-1.69-4.281H8.122l3.892-9.144 5.662 13.425zM8.884 1.376H0v21.248zm15.116 0h-8.884L24 22.624Z"/></svg>              <!-- CSS -->
+              <!-- Photoshop -->
+              <svg class="icon-static" fill="#a0a0a0" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Adobe Photoshop</title><path d="M9.85 8.42c-.37-.15-.77-.21-1.18-.2-.26 0-.49 0-.68.01-.2-.01-.34 0-.41.01v3.36c.14.01.27.02.39.02h.53c.39 0 .78-.06 1.15-.18.32-.09.6-.28.82-.53.21-.25.31-.59.31-1.03.01-.31-.07-.62-.23-.89-.17-.26-.41-.46-.7-.57zM19.75.3H4.25C1.9.3 0 2.2 0 4.55v14.899c0 2.35 1.9 4.25 4.25 4.25h15.5c2.35 0 4.25-1.9 4.25-4.25V4.55C24 2.2 22.1.3 19.75.3zm-7.391 11.65c-.399.56-.959.98-1.609 1.22-.68.25-1.43.34-2.25.34-.24 0-.4 0-.5-.01s-.24-.01-.43-.01v3.209c.01.07-.04.131-.11.141H5.52c-.08 0-.12-.041-.12-.131V6.42c0-.07.03-.11.1-.11.17 0 .33 0 .56-.01.24-.01.49-.01.76-.02s.56-.01.87-.02c.31-.01.61-.01.91-.01.82 0 1.5.1 2.06.31.5.17.96.45 1.34.82.32.32.57.71.73 1.14.149.42.229.85.229 1.3.001.86-.199 1.57-.6 2.13zm7.091 3.89c-.28.4-.671.709-1.12.891-.49.209-1.09.318-1.811.318-.459 0-.91-.039-1.359-.129-.35-.061-.7-.17-1.02-.32-.07-.039-.121-.109-.111-.189v-1.74c0-.029.011-.07.041-.09.029-.02.06-.01.09.01.39.23.8.391 1.24.49.379.1.779.15 1.18.15.38 0 .65-.051.83-.141.16-.07.27-.24.27-.42 0-.141-.08-.27-.24-.4-.16-.129-.489-.279-.979-.471-.51-.18-.979-.42-1.42-.719-.31-.221-.569-.51-.761-.85-.159-.32-.239-.67-.229-1.021 0-.43.12-.84.341-1.21.25-.4.619-.72 1.049-.92.469-.239 1.059-.349 1.769-.349.41 0 .83.03 1.24.09.3.04.59.12.86.23.039.01.08.05.1.09.01.04.02.08.02.12v1.63c0 .04-.02.08-.05.1-.09.02-.14.02-.18 0-.3-.16-.62-.27-.96-.34-.37-.08-.74-.13-1.12-.13-.2-.01-.41.02-.601.07-.129.03-.24.1-.31.2-.05.08-.08.18-.08.27s.04.18.101.26c.09.11.209.2.34.27.229.12.47.23.709.33.541.18 1.061.43 1.541.73.33.209.6.49.789.83.16.318.24.67.23 1.029.011.471-.129.94-.389 1.331z"/></svg>
+              <!-- Indesign -->
+              <svg class="icon-static" fill="#a0a0a0" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Adobe InDesign</title><path d="M0 .3v23.4h24V.3H0zm1 1h22v21.4H1V1.3zm7.775 15.218c0 .1-.017.132-.132.132H7.107c-.1 0-.132-.05-.132-.132V5.782c0-.1.05-.132.132-.132H8.66c.082 0 .115.033.115.116v10.752zm1.77-3.872c0-2.393 1.578-4.257 4.102-4.257.214 0 .33 0 .528.015V5.75c0-.066.05-.1.1-.1H16.9c.084 0 .1.034.1.084v9.355c0 .28 0 .625.05 1.004 0 .066-.02.083-.087.116-.858.413-1.766.595-2.624.595-2.213 0-3.797-1.37-3.797-4.158zm4.63-2.624c-.148-.066-.347-.1-.594-.1-1.285 0-2.187.99-2.187 2.64 0 1.882.918 2.64 2.073 2.64.247 0 .512-.032.71-.115v-5.065z"/></svg>
+              <!-- Illustartor -->
+              <svg class="icon-static" fill="#a0a0a0" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Adobe Illustrator</title><path d="M10.53 10.73c-.1-.31-.19-.61-.29-.92-.1-.31-.19-.6-.27-.89-.08-.28-.15-.54-.22-.78h-.02c-.09.43-.2.86-.34 1.29-.15.48-.3.98-.46 1.48-.14.51-.29.98-.44 1.4h2.54c-.06-.211-.14-.46-.23-.721-.09-.269-.18-.559-.27-.859zM19.75.3H4.25C1.9.3 0 2.2 0 4.55v14.9c0 2.35 1.9 4.25 4.25 4.25h15.5c2.35 0 4.25-1.9 4.25-4.25V4.55C24 2.2 22.1.3 19.75.3zM14.7 16.83h-2.091c-.069.01-.139-.04-.159-.11l-.82-2.38H7.91l-.76 2.35c-.02.09-.1.15-.19.141H5.08c-.11 0-.14-.061-.11-.18L8.19 7.38c.03-.1.06-.21.1-.33.04-.21.06-.43.06-.65-.01-.05.03-.1.08-.11h2.59c.08 0 .12.03.13.08l3.65 10.3c.03.109 0 .16-.1.16zm3.4-.15c0 .11-.039.16-.129.16H16.01c-.1 0-.15-.061-.15-.16v-7.7c0-.1.041-.14.131-.14h1.98c.09 0 .129.05.129.14v7.7zm-.209-9.03c-.231.24-.571.37-.911.35-.33.01-.65-.12-.891-.35-.23-.25-.35-.58-.34-.92-.01-.34.12-.66.359-.89.242-.23.562-.35.892-.35.391 0 .689.12.91.35.22.24.34.56.33.89.01.34-.11.67-.349.92z"/></svg>
+              <!-- SVG -->
+              <svg class="icon-static" fill="#a0a0a0" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>SVG</title><path d="M12 0c-1.497 0-2.749.965-3.248 2.17a3.45 3.45 0 00-.238 1.416 3.459 3.459 0 00-1.168-.834 3.508 3.508 0 00-1.463-.256 3.513 3.513 0 00-2.367 1.02c-1.06 1.058-1.263 2.625-.764 3.83.179.432.47.82.82 1.154a3.49 3.49 0 00-1.402.252C.965 9.251 0 10.502 0 12c0 1.497.965 2.749 2.17 3.248.437.181.924.25 1.414.236-.357.338-.65.732-.832 1.17-.499 1.205-.295 2.772.764 3.83 1.058 1.06 2.625 1.263 3.83.764.437-.181.83-.476 1.168-.832-.014.49.057.977.238 1.414C9.251 23.035 10.502 24 12 24c1.497 0 2.749-.965 3.248-2.17a3.45 3.45 0 00.238-1.416c.338.356.73.653 1.168.834 1.205.499 2.772.295 3.83-.764 1.06-1.058 1.263-2.625.764-3.83a3.459 3.459 0 00-.834-1.168 3.45 3.45 0 001.416-.238C23.035 14.749 24 13.498 24 12c0-1.497-.965-2.749-2.17-3.248a3.455 3.455 0 00-1.414-.236c.357-.338.65-.732.832-1.17.499-1.205.295-2.772-.764-3.83a3.513 3.513 0 00-2.367-1.02 3.508 3.508 0 00-1.463.256c-.437.181-.83.475-1.168.832a3.45 3.45 0 00-.238-1.414C14.749.965 13.498 0 12 0zm-.041 1.613a1.902 1.902 0 011.387 3.246v3.893L16.098 6A1.902 1.902 0 1118 7.902l-2.752 2.752h3.893a1.902 1.902 0 110 2.692h-3.893L18 16.098A1.902 1.902 0 1116.098 18l-2.752-2.752v3.893a1.902 1.902 0 11-2.692 0v-3.893L7.902 18A1.902 1.902 0 116 16.098l2.752-2.752H4.859a1.902 1.902 0 110-2.692h3.893L6 7.902A1.902 1.902 0 117.902 6l2.752 2.752V4.859a1.902 1.902 0 011.305-3.246z"/></svg>
+            </div>
+          </div>
+
+          <!-- Block 4 Web Development -->
+          <div id="webdev" class="content mx-0 p-20">
+            <div class="row">
+
+              <!-- left -->
+              <div class="col-md-8">
+                <div class="row">
+                  <div class="content web-perspective-parent  bg-danger shadow">
+                    <img src="images/webdev/lescoquettes.jpg" 
+                    alt="" class="img-fluid web-perspective-child">
+                  </div>
+                  <div class="content web-perspective-parent  bg-danger shadow">
+                    <img src="images/webdev/dv1.jpg" alt="" class="img-fluid web-perspective-child">
+                  </div>                  
+                  <div class="content web-perspective-parent  bg-danger shadow">
+                    <img src="images/webdev/azecchini.jpg" alt="" class="img-fluid web-perspective-child">
+                  </div>
+                </div>
+                <div class="row">
+                  <div class="content web-perspective-parent  bg-danger shadow">
+                    <img src="images/webdev/ptabar.jpg" alt="" class="img-fluid web-perspective-child">
+                  </div>
+                  <div class="content web-perspective-parent  bg-danger shadow">
+                    <img src="images/webdev/mjori.jpg" alt="" class="img-fluid web-perspective-child">
+                  </div>                  
+                  <div class="content web-perspective-parent  bg-danger shadow">
+                    <img src="images/webdev/scelso2002.jpg" alt="" class="img-fluid web-perspective-child">
+                  </div>
+                </div>
+              </div>
+
+              <!-- right -->
+              <div class="col-md-4 text-justify Roboto-Light d-flex align-self-center">
+
+                <div class="content text-dark">
+                  <h2 class="card-title font-size-22 DMSerif-title text-dark">
+                    Web Development &#128640
+                  </h2>
+      
+                  <p>
+                    I can deliver nice looking and elegant websites with fully 
+                    responsive layouts, 
+                    easy to use, intuitive UX/UI is a priority as well as fast 
+                    load times and lag free interaction. I can use CMS such as 
+                    Wordpress or Joomla but I'd rather plain HTML/CSS/JS in 
+                    combination with the most popular frameworks and tools.  
+                  </p>
+                  <p>
+                    <ul>
+                      <li>HTML/CSS/JS</li>
+                      <li>Bootstrap/Tachyons/Halfmoon</li>
+                      <li>VS Code</li>
+                      <li>Bitbucket&Git</li>
+                      <li>Parcel</li>
+                      <li>CMS Wordpress Joomla</li>
+                    </ul>        
+                  </p>
+                </div>
+
+              </div>
+            </div>
+            <!-- Icons -->
+            <hr style="border-top: lightskyblue 1px solid;">
+            <div class="row d-flex justify-content-center">
+              <!-- HTML -->
+              <svg class="icon-static" fill="#E34F26" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>HTML5</title><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.564-2.438L1.5 0zm7.031 9.75l-.232-2.718 10.059.003.23-2.622L5.412 4.41l.698 8.01h9.126l-.326 3.426-2.91.804-2.955-.81-.188-2.11H6.248l.33 4.171L12 19.351l5.379-1.443.744-8.157H8.531z"/></svg>
+              <!-- CSS -->
+              <svg class="icon-static" fill="#1572B6" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>CSS3</title><path d="M1.5 0h21l-1.91 21.563L11.977 24l-8.565-2.438L1.5 0zm17.09 4.413L5.41 4.41l.213 2.622 10.125.002-.255 2.716h-6.64l.24 2.573h6.182l-.366 3.523-2.91.804-2.956-.81-.188-2.11h-2.61l.29 3.855L12 19.288l5.373-1.53L18.59 4.414z"/></svg>
+              <!-- JS -->
+              <svg class="icon-static" fill="#F7DF1E" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>JavaScript</title><path d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.976.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.404-.601-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.811-.18-1.26-.586-1.755-1.336l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z"/></svg>
+              <!-- VSCode -->
+              <svg class="icon-static" fill="#007ACC" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Visual Studio Code</title><path d="M23.15 2.587L18.21.21a1.494 1.494 0 0 0-1.705.29l-9.46 8.63-4.12-3.128a.999.999 0 0 0-1.276.057L.327 7.261A1 1 0 0 0 .326 8.74L3.899 12 .326 15.26a1 1 0 0 0 .001 1.479L1.65 17.94a.999.999 0 0 0 1.276.057l4.12-3.128 9.46 8.63a1.492 1.492 0 0 0 1.704.29l4.942-2.377A1.5 1.5 0 0 0 24 20.06V3.939a1.5 1.5 0 0 0-.85-1.352zm-5.146 14.861L10.826 12l7.178-5.448v10.896z"/></svg>
+              <!-- NPM -->
+              <svg class="icon-static" fill="#CB3837" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>NPM</title><path d="M0 7.334v8h6.666v1.332H12v-1.332h12v-8H0zm6.666 6.664H5.334v-4H3.999v4H1.335V8.667h5.331v5.331zm4 0v1.336H8.001V8.667h5.334v5.332h-2.669v-.001zm12.001 0h-1.33v-4h-1.336v4h-1.335v-4h-1.33v4h-2.671V8.667h8.002v5.331zM10.665 10H12v2.667h-1.335V10z"/></svg>
+              <!-- Git -->
+              <svg class="icon-static" fill="#F05032" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Git</title><path d="M23.546 10.93L13.067.452c-.604-.603-1.582-.603-2.188 0L8.708 2.627l2.76 2.76c.645-.215 1.379-.07 1.889.441.516.515.658 1.258.438 1.9l2.658 2.66c.645-.223 1.387-.078 1.9.435.721.72.721 1.884 0 2.604-.719.719-1.881.719-2.6 0-.539-.541-.674-1.337-.404-1.996L12.86 8.955v6.525c.176.086.342.203.488.348.713.721.713 1.883 0 2.6-.719.721-1.889.721-2.609 0-.719-.719-.719-1.879 0-2.598.182-.18.387-.316.605-.406V8.835c-.217-.091-.424-.222-.6-.401-.545-.545-.676-1.342-.396-2.009L7.636 3.7.45 10.881c-.6.605-.6 1.584 0 2.189l10.48 10.477c.604.604 1.582.604 2.186 0l10.43-10.43c.605-.603.605-1.582 0-2.187"/></svg>
+              <!-- Bitbucket -->
+              <svg class="icon-static" fill="#0052CC" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Bitbucket</title><path d="M.778 1.211c-.424-.006-.772.334-.778.758 0 .045.002.09.01.134l3.263 19.811c.084.499.515.867 1.022.872H19.95c.382.004.708-.271.77-.646l3.27-20.03c.068-.418-.216-.813-.635-.881-.045-.008-.089-.011-.133-.01L.778 1.211zM14.52 15.528H9.522L8.17 8.464h7.561l-1.211 7.064z"/></svg>
+              <!-- Bootstrap -->
+              <svg class="icon-static" fill="#563D7C" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Bootstrap</title><path d="M20 0H4C1.793.006.006 1.793 0 4v16c0 2.2 1.8 4 4 4h16c2.2 0 4-1.8 4-4V4c0-2.2-1.8-4-4-4zm-2.187 16.855c-.2.482-.517.907-.923 1.234-.42.34-.952.62-1.607.82-.654.203-1.432.305-2.333.305H6.518v-14h6.802c1.258 0 2.266.283 3.02.86.76.58 1.138 1.444 1.138 2.61 0 .705-.172 1.31-.518 1.81-.344.497-.84.886-1.48 1.156v.046c.854.18 1.515.585 1.95 1.215s.658 1.426.658 2.387c0 .538-.104 1.05-.3 1.528l.025.027zm-2.776-3.45c-.41-.375-.986-.558-1.73-.558H8.985v4.368h4.334c.74 0 1.32-.192 1.73-.58.41-.385.62-.934.62-1.64-.007-.69-.21-1.224-.62-1.59h-.017zm-.6-2.823c.396-.336.59-.817.59-1.444 0-.704-.175-1.204-.53-1.49-.352-.285-.86-.433-1.528-.433h-4v3.863h4c.583 0 1.08-.17 1.464-.496z"/></svg>
+              <!-- Wordpress -->
+              <svg class="icon-static" fill="#21759B" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>WordPress</title><path d="M21.469 6.825c.84 1.537 1.318 3.3 1.318 5.175 0 3.979-2.156 7.456-5.363 9.325l3.295-9.527c.615-1.54.82-2.771.82-3.864 0-.405-.026-.78-.07-1.11m-7.981.105c.647-.03 1.232-.105 1.232-.105.582-.075.514-.93-.067-.899 0 0-1.755.135-2.88.135-1.064 0-2.85-.15-2.85-.15-.585-.03-.661.855-.075.885 0 0 .54.061 1.125.09l1.68 4.605-2.37 7.08L5.354 6.9c.649-.03 1.234-.1 1.234-.1.585-.075.516-.93-.065-.896 0 0-1.746.138-2.874.138-.2 0-.438-.008-.69-.015C4.911 3.15 8.235 1.215 12 1.215c2.809 0 5.365 1.072 7.286 2.833-.046-.003-.091-.009-.141-.009-1.06 0-1.812.923-1.812 1.914 0 .89.513 1.643 1.06 2.531.411.72.89 1.643.89 2.977 0 .915-.354 1.994-.821 3.479l-1.075 3.585-3.9-11.61.001.014zM12 22.784c-1.059 0-2.081-.153-3.048-.437l3.237-9.406 3.315 9.087c.024.053.05.101.078.149-1.12.393-2.325.609-3.582.609M1.211 12c0-1.564.336-3.05.935-4.39L7.29 21.709C3.694 19.96 1.212 16.271 1.211 12M12 0C5.385 0 0 5.385 0 12s5.385 12 12 12 12-5.385 12-12S18.615 0 12 0"/></svg>
+            </div>
+          </div>
+
+          <!-- Block 5 Coding-->
+          <div id="coding" class="diagonal-shadow">
+            <div class="content diagonal-reverse px-20 border-bottom bg-light bg-dark-light-dm">
+              <div class="row">
+
+                <!-- left -->
+                <div class="col-md-4 d-flex flex-column text-justify Roboto-Light">                  
+                  <div class="content m-0">
+                    <h2 class="content-title ont-size-22 DMSerif-title mt-20">
+                      Coding &#127918
+                    </h2>
+        
+                    <p>
+                      For 5+ years I have been developing applications 
+                      and generative algorithms for plotter art on custom devices. 
+                      I have some programming and development experience on Arduino 
+                      and Processing or Javascript for motion design, visuals or gaming.
+                    </p>        
+                  </div>
+                  <!-- bottom badges -->
+                  <div class="m-0 text-left mt-auto">
+                    <b>noraa.js</b> development environment 
+                    <hr>
+                    <!-- JS -->
+                    <span class="badge Roboto-Light">
+                      <i class="fab fa-js badge-icon" aria-hidden="true"></i>Javascript
+                    </span>
+                    <!-- dat.gui -->
+                    <span class="badge Roboto-Light">
+                      <i class="fas fa-bars badge-icon" aria-hidden="true"></i>Dat.Gui
+                    </span>
+                    <!-- canvas -->
+                    <span class="badge Roboto-Light">
+                      <i class="fas fa-code badge-icon" aria-hidden="true"></i>Canvas
+                    </span>
+                    <!-- gcode -->
+                    <span class="badge Roboto-Light">
+                      <i class="fas fa-cubes badge-icon" aria-hidden="true"></i>GCode
+                    </span>
+                    <!-- svg -->
+                    <span class="badge Roboto-Light">
+                      <i class="fas fa-bezier-curve badge-icon" aria-hidden="true"></i>SVG
+                    </span>
+                  </div>                           
+                </div>
+                
+  
+                <!-- right -->
+                <div class="col-md-8 img-perspective-parent">
+                  <img src="images/coding/noraa.jpg"                   
+                  alt="noraa.js" class="img-fluid img-perspective-child shadow">
+                </div>
+              </div>
+              <hr>
+              <!-- Icons -->
+              <div class="row d-flex justify-content-center pb-20">
+                <!-- Arduino -->
+                <svg class="icon-static" fill="#a0a0a0" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Arduino</title><path d="M23.82 12a5.78 5.78 0 0 0-5.88-5.67c-.29 0-.6.02-.9.05-2.52.37-4.2 2.18-5.13 3.57-.95-1.39-2.64-3.2-5.14-3.57-.3-.03-.6-.05-.9-.05A5.78 5.78 0 0 0 0 12a5.78 5.78 0 0 0 5.87 5.67c.3 0 .6-.02.92-.06 2.52-.36 4.2-2.17 5.14-3.56.95 1.39 2.63 3.2 5.14 3.57.31.03.6.05.91.05A5.78 5.78 0 0 0 23.82 12zM6.48 15.6c-.2.04-.43.04-.63.04A3.77 3.77 0 0 1 2 11.98a3.78 3.78 0 0 1 3.86-3.66c.2 0 .42.02.63.04 2.37.35 3.82 2.67 4.31 3.62-.5.95-1.95 3.3-4.31 3.62zM13 12c.49-.93 1.94-3.27 4.31-3.62.2-.04.42-.04.62-.04A3.76 3.76 0 0 1 21.8 12a3.78 3.78 0 0 1-3.86 3.66c-.2 0-.42-.02-.62-.04-2.36-.35-3.82-2.69-4.31-3.62zm-8.79.59h3.54v-1.16H4.22v1.16zm14.13 0h1.19v-1.16h-1.2v-1.19H17.2v1.2H16v1.15h1.2v1.18h1.15V12.6zM24 7.06c0 .3-.22.51-.53.51a.51.51 0 0 1-.53-.5c0-.28.24-.52.53-.52.31 0 .53.22.53.51zm-.91 0c0 .22.16.4.4.4.22 0 .38-.18.38-.4s-.16-.4-.38-.4c-.24-.02-.4.16-.4.4zm.3.26h-.1V6.8l.2-.01c.09 0 .14.01.18.03.04.02.06.06.06.11 0 .06-.04.1-.11.11.05.02.07.06.09.13l.03.13h-.12c-.02-.02-.02-.07-.04-.13-.02-.05-.04-.07-.11-.07h-.05l-.02.22zm.02-.3h.06c.07 0 .1-.01.1-.07 0-.05-.03-.07-.1-.07h-.07v.14h.01z"/></svg>
+                <!-- Java -->
+                <svg class="icon-static" fill="#a0a0a0" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Java</title><path d="M8.851 18.56s-.917.534.653.714c1.902.218 2.874.187 4.969-.211 0 0 .552.346 1.321.646-4.699 2.013-10.633-.118-6.943-1.149M8.276 15.933s-1.028.761.542.924c2.032.209 3.636.227 6.413-.308 0 0 .384.389.987.602-5.679 1.661-12.007.13-7.942-1.218M13.116 11.475c1.158 1.333-.304 2.533-.304 2.533s2.939-1.518 1.589-3.418c-1.261-1.772-2.228-2.652 3.007-5.688 0-.001-8.216 2.051-4.292 6.573M19.33 20.504s.679.559-.747.991c-2.712.822-11.288 1.069-13.669.033-.856-.373.75-.89 1.254-.998.527-.114.828-.093.828-.093-.953-.671-6.156 1.317-2.643 1.887 9.58 1.553 17.462-.7 14.977-1.82M9.292 13.21s-4.362 1.036-1.544 1.412c1.189.159 3.561.123 5.77-.062 1.806-.152 3.618-.477 3.618-.477s-.637.272-1.098.587c-4.429 1.165-12.986.623-10.522-.568 2.082-1.006 3.776-.892 3.776-.892M17.116 17.584c4.503-2.34 2.421-4.589.968-4.285-.355.074-.515.138-.515.138s.132-.207.385-.297c2.875-1.011 5.086 2.981-.928 4.562 0-.001.07-.062.09-.118M14.401 0s2.494 2.494-2.365 6.33c-3.896 3.077-.888 4.832-.001 6.836-2.274-2.053-3.943-3.858-2.824-5.539 1.644-2.469 6.197-3.665 5.19-7.627M9.734 23.924c4.322.277 10.959-.153 11.116-2.198 0 0-.302.775-3.572 1.391-3.688.694-8.239.613-10.937.168 0-.001.553.457 3.393.639"/></svg>
+                <!-- Open Source -->
+                <svg class="icon-static" fill="#a0a0a0" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Open Source Initiative</title><path d="M-.102 12.53C.01 5.956 4.613 1.277 10.248.52c6.718-.9 12.371 3.67 13.456 9.735 1.03 5.75-2.13 11.133-7.339 13.263-.45.184-.697.082-.87-.373l-2.587-6.728c-.15-.392-.048-.64.34-.814 1.17-.532 1.901-1.423 2.095-2.7a3.46 3.46 0 0 0-3.122-3.98 3.463 3.463 0 0 0-3.75 2.89c-.253 1.598.536 3.084 2.027 3.76.464.214.556.418.377.892l-2.6 6.772c-.125.334-.4.45-.75.315a11.98 11.98 0 0 1-6.33-5.76c-1.206-2.383-1.22-4.247-1.297-5.263zm1.012-.092c.02.32.03.692.063 1.07.305 3.48 2.4 6.946 6.34 8.862.156.073.214.04.272-.11q1.082-2.84 2.178-5.68c.063-.16.03-.231-.116-.323-1.53-.963-2.29-2.348-2.207-4.163.048-1.045.45-1.96 1.152-2.725 1.452-1.583 3.727-1.927 5.59-.852a4.436 4.436 0 0 1 2.188 4.376c-.174 1.48-.934 2.609-2.212 3.378-.13.078-.17.14-.11.29q1.102 2.847 2.187 5.698c.058.15.116.184.27.11 1.72-.802 3.157-1.95 4.265-3.484 1.685-2.333 2.377-4.932 2.048-7.793-.663-5.687-5.78-10.397-12.368-9.584-5.135.63-9.453 4.96-9.54 10.93z"/></svg>
+                <!-- SVG -->
+                <svg class="icon-static" fill="#a0a0a0" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>SVG</title><path d="M12 0c-1.497 0-2.749.965-3.248 2.17a3.45 3.45 0 00-.238 1.416 3.459 3.459 0 00-1.168-.834 3.508 3.508 0 00-1.463-.256 3.513 3.513 0 00-2.367 1.02c-1.06 1.058-1.263 2.625-.764 3.83.179.432.47.82.82 1.154a3.49 3.49 0 00-1.402.252C.965 9.251 0 10.502 0 12c0 1.497.965 2.749 2.17 3.248.437.181.924.25 1.414.236-.357.338-.65.732-.832 1.17-.499 1.205-.295 2.772.764 3.83 1.058 1.06 2.625 1.263 3.83.764.437-.181.83-.476 1.168-.832-.014.49.057.977.238 1.414C9.251 23.035 10.502 24 12 24c1.497 0 2.749-.965 3.248-2.17a3.45 3.45 0 00.238-1.416c.338.356.73.653 1.168.834 1.205.499 2.772.295 3.83-.764 1.06-1.058 1.263-2.625.764-3.83a3.459 3.459 0 00-.834-1.168 3.45 3.45 0 001.416-.238C23.035 14.749 24 13.498 24 12c0-1.497-.965-2.749-2.17-3.248a3.455 3.455 0 00-1.414-.236c.357-.338.65-.732.832-1.17.499-1.205.295-2.772-.764-3.83a3.513 3.513 0 00-2.367-1.02 3.508 3.508 0 00-1.463.256c-.437.181-.83.475-1.168.832a3.45 3.45 0 00-.238-1.414C14.749.965 13.498 0 12 0zm-.041 1.613a1.902 1.902 0 011.387 3.246v3.893L16.098 6A1.902 1.902 0 1118 7.902l-2.752 2.752h3.893a1.902 1.902 0 110 2.692h-3.893L18 16.098A1.902 1.902 0 1116.098 18l-2.752-2.752v3.893a1.902 1.902 0 11-2.692 0v-3.893L7.902 18A1.902 1.902 0 116 16.098l2.752-2.752H4.859a1.902 1.902 0 110-2.692h3.893L6 7.902A1.902 1.902 0 117.902 6l2.752 2.752V4.859a1.902 1.902 0 011.305-3.246z"/></svg>
+                <!-- JS -->
+                <svg class="icon-static" fill="#a0a0a0" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>JavaScript</title><path d="M0 0h24v24H0V0zm22.034 18.276c-.175-1.095-.888-2.015-3.003-2.873-.736-.345-1.554-.585-1.797-1.14-.091-.33-.105-.51-.046-.705.15-.646.915-.84 1.515-.66.39.12.75.42.976.9 1.034-.676 1.034-.676 1.755-1.125-.27-.42-.404-.601-.586-.78-.63-.705-1.469-1.065-2.834-1.034l-.705.089c-.676.165-1.32.525-1.71 1.005-1.14 1.291-.811 3.541.569 4.471 1.365 1.02 3.361 1.244 3.616 2.205.24 1.17-.87 1.545-1.966 1.41-.811-.18-1.26-.586-1.755-1.336l-1.83 1.051c.21.48.45.689.81 1.109 1.74 1.756 6.09 1.666 6.871-1.004.029-.09.24-.705.074-1.65l.046.067zm-8.983-7.245h-2.248c0 1.938-.009 3.864-.009 5.805 0 1.232.063 2.363-.138 2.711-.33.689-1.18.601-1.566.48-.396-.196-.597-.466-.83-.855-.063-.105-.11-.196-.127-.196l-1.825 1.125c.305.63.75 1.172 1.324 1.517.855.51 2.004.675 3.207.405.783-.226 1.458-.691 1.811-1.411.51-.93.402-2.07.397-3.346.012-2.054 0-4.109 0-6.179l.004-.056z"/></svg>
+              </div>
+            </div>
+          </div>
+
+          <!-- Block 6 Motion and 3D-->
+          <div id="motion" class="content m-0 p-20">
+            <div class="row">
+
+              <!-- left -->
+              <div class="col-md-6">
+                <!-- centurione -->
+                <img style="margin-bottom: -2.6rem; margin-left: -2rem" 
+                src="images/motion/spaghetti_cenurione.png" 
+                alt="centurione" class="img-fluid">
+
+              </div>
+
+              <!-- right -->
+              <div class="col-md-6 text-justify Roboto-Light text-dark">
+
+                <h2 class="content-title font-size-22 DMSerif-title text-dark">
+                  3D + Motion &#127916
+                </h2>
+    
+                <p>
+                  I am certified on Maya 3D animation and rigging, and occasionally 
+                  I worked on character design, rendering for product design and architecture
+                  modelling for 3D printing and prototypes manufactoring. I also enjoy 
+                  using open source software like Blender. 
+                </p>
+
+                <hr>
+                <!-- Autodesk -->
+                <svg class="icon-static" fill="#34f7b6" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Autodesk Maya</title><path d="m14.574 1.0203c-0.097-0.096997-0.29099-0.58198-0.97097-0.58198h-6.7038s0.97097 0.096997 1.36 1.068c0 0 1.069 2.5269 2.0399 4.9558 2.8179 6.6068 7.1898 17.099 7.1898 17.099h6.5108c0.097-0.097-9.3267-22.443-9.4247-22.54zm-8.8407 0.87497-5.3438 12.631c-0.29199 0.87497-0.097997 1.9439 1.457 1.9439h4.1779l3.6919-8.8417c-1.166-2.9149-2.1359-5.2478-2.1359-5.2478-0.096997-0.29199-0.38899-1.069-0.97197-1.069-0.58298 0-0.77698 0.48598-0.87397 0.58298zm-0.097997 15.643h-4.4689c-0.77698 0-1.166-0.48598-1.166-0.48598 0.77698 1.36 3.0119 5.6358 3.0119 5.6358 0.38899 0.48598 0.77698 0.77698 1.36 0.77698 1.263 0 3.2069-1.263 3.2069-1.263l7.4808-4.6639z"/></svg>
+                <!-- Blender -->
+                <svg class="icon-static" fill="#db6606"  role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Blender 3D</title><path d="M12.51 13.214c.046-.8.438-1.506 1.03-2.006a3.424 3.424 0 0 1 2.212-.79c.85 0 1.631.3 2.211.79.592.5.983 1.206 1.028 2.005.045.823-.285 1.586-.865 2.153a3.389 3.389 0 0 1-2.374.938 3.393 3.393 0 0 1-2.376-.938c-.58-.567-.91-1.33-.865-2.152M7.35 14.831c.006.314.106.922.256 1.398a7.372 7.372 0 0 0 1.593 2.757 8.227 8.227 0 0 0 2.787 2.001 8.947 8.947 0 0 0 3.66.76 8.964 8.964 0 0 0 3.657-.772 8.285 8.285 0 0 0 2.785-2.01 7.428 7.428 0 0 0 1.592-2.762 6.964 6.964 0 0 0 .25-3.074 7.123 7.123 0 0 0-1.016-2.779 7.764 7.764 0 0 0-1.852-2.043h.002L13.566 2.55l-.02-.015c-.492-.378-1.319-.376-1.86.002-.547.382-.609 1.015-.123 1.415l-.001.001 3.126 2.543-9.53.01h-.013c-.788.001-1.545.518-1.695 1.172-.154.665.38 1.217 1.2 1.22V8.9l4.83-.01-8.62 6.617-.034.025c-.813.622-1.075 1.658-.563 2.313.52.667 1.625.668 2.447.004L7.414 14s-.069.52-.063.831zm12.09 1.741c-.97.988-2.326 1.548-3.795 1.55-1.47.004-2.827-.552-3.797-1.538a4.51 4.51 0 0 1-1.036-1.622 4.282 4.282 0 0 1 .282-3.519 4.702 4.702 0 0 1 1.153-1.371c.942-.768 2.141-1.183 3.396-1.185 1.256-.002 2.455.41 3.398 1.175.48.391.87.854 1.152 1.367a4.28 4.28 0 0 1 .522 1.706 4.236 4.236 0 0 1-.239 1.811 4.54 4.54 0 0 1-1.035 1.626"/></svg>
+                <!-- Premiere -->
+                <svg class="icon-static" fill="#7936a0" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Adobe Premiere Pro</title><path d="M6.297 5.778c0-.066.016-.116.099-.116.643-.033 1.584-.05 2.574-.05 2.772 0 3.976 1.519 3.976 3.466 0 2.54-1.838 3.63-4.099 3.63-.379 0-.511-.017-.775-.017v3.843c0 .083-.033.116-.116.116H6.412c-.082 0-.115-.033-.115-.116zm1.775 5.313c.231.016.412.016.808.016 1.172 0 2.268-.412 2.268-1.996 0-1.27-.783-1.914-2.119-1.914-.396 0-.776.016-.957.033zm6.4-.908c0-.115 0-.412-.05-.973 0-.083.012-.1.078-.132a10.42 10.42 0 0 1 3.656-.693c.083 0 .116.016.116.099v1.452c0 .082-.027.099-.11.099-.626-.033-1.544.05-1.89.198v6.301c0 .083-.033.116-.116.116h-1.569c-.082 0-.115-.033-.115-.116zM0 .3v23.4h24V.3zm1 1h22v21.4H1Z"/></svg>
+                <!-- After Effect -->
+                <svg class="icon-static" fill="#7936a0" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Adobe After Effects</title><path d="M8.54 10.73c-.1-.31-.19-.61-.29-.92s-.19-.6-.27-.89c-.08-.28-.15-.54-.22-.78h-.02c-.09.43-.2.86-.34 1.29-.15.48-.3.98-.46 1.48-.13.51-.29.98-.44 1.4h2.54c-.06-.21-.14-.46-.23-.72-.09-.27-.18-.56-.27-.86zm8.58-.29c-.55-.03-1.07.26-1.33.76-.12.23-.19.47-.22.72h2.109c.26 0 .45 0 .57-.01.08-.01.16-.03.23-.08v-.1c0-.13-.021-.25-.061-.37-.178-.56-.708-.94-1.298-.92zM19.75.3H4.25C1.9.3 0 2.2 0 4.55v14.9c0 2.35 1.9 4.25 4.25 4.25h15.5c2.35 0 4.25-1.9 4.25-4.25V4.55C24 2.2 22.1.3 19.75.3zm-7.04 16.511h-2.09c-.07.01-.14-.041-.16-.11l-.82-2.4H5.92l-.76 2.36c-.02.09-.1.15-.19.14H3.09c-.11 0-.14-.06-.11-.18L6.2 7.39c.03-.1.06-.19.1-.31.04-.21.06-.43.06-.65-.01-.05.03-.1.08-.11h2.59c.07 0 .12.03.13.08l3.65 10.25c.03.11.001.161-.1.161zm7.851-3.991c-.021.189-.031.33-.041.42-.01.07-.069.13-.14.13-.06 0-.17.01-.33.021-.159.02-.35.029-.579.029-.23 0-.471-.04-.73-.04h-3.17c.039.31.14.62.31.89.181.271.431.48.729.601.4.17.841.26 1.281.25.35-.011.699-.04 1.039-.11.311-.039.61-.119.891-.23.05-.039.08-.02.08.08v1.531c0 .039-.01.08-.021.119-.021.03-.04.051-.069.07-.32.14-.65.24-1 .3-.471.09-.94.13-1.42.12-.761 0-1.4-.12-1.92-.35-.49-.211-.921-.541-1.261-.95-.319-.39-.55-.83-.69-1.31-.14-.471-.209-.961-.209-1.461 0-.539.08-1.07.25-1.59.16-.5.41-.96.75-1.37.33-.4.739-.72 1.209-.95.471-.23 1.03-.31 1.67-.31.531-.01 1.06.09 1.55.31.41.18.77.45 1.05.8.26.34.47.72.601 1.14.129.4.189.81.189 1.22 0 .24-.01.45-.019.64z"/></svg>
+                
+                <!-- card -->
+                <div class="card shadow m-0 p-5">
+                  <img class="img-fluid rounded-top" 
+                  src="images/motion/alessi-jori.jpg" 
+                  alt="alessi-jori" srcset="">
+                  <div class="content">
+                    <p class="Roboto-Light mb-0">
+                      <b class="text-uppercase">Pignola</b>
+                      <span class="text-lowercase font-size-12"> PALLA PER ALBERO DI NATALE</span> 
+                    </p>
+                    <p class="Roboto-Light my-0">
+                      <b>Studio Marcello Jori</b> per <b>Alessi</b>
+                    </p>
+                    <hr>
+                    <span class="badge Roboto-Light">
+                      <i class="fas fa-cube badge-icon"></i>3D modelling
+                    </span>
+                    <span class="badge Roboto-Light">
+                      <svg class="badge-icon" fill="#db6606"  role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Blender 3D</title><path d="M12.51 13.214c.046-.8.438-1.506 1.03-2.006a3.424 3.424 0 0 1 2.212-.79c.85 0 1.631.3 2.211.79.592.5.983 1.206 1.028 2.005.045.823-.285 1.586-.865 2.153a3.389 3.389 0 0 1-2.374.938 3.393 3.393 0 0 1-2.376-.938c-.58-.567-.91-1.33-.865-2.152M7.35 14.831c.006.314.106.922.256 1.398a7.372 7.372 0 0 0 1.593 2.757 8.227 8.227 0 0 0 2.787 2.001 8.947 8.947 0 0 0 3.66.76 8.964 8.964 0 0 0 3.657-.772 8.285 8.285 0 0 0 2.785-2.01 7.428 7.428 0 0 0 1.592-2.762 6.964 6.964 0 0 0 .25-3.074 7.123 7.123 0 0 0-1.016-2.779 7.764 7.764 0 0 0-1.852-2.043h.002L13.566 2.55l-.02-.015c-.492-.378-1.319-.376-1.86.002-.547.382-.609 1.015-.123 1.415l-.001.001 3.126 2.543-9.53.01h-.013c-.788.001-1.545.518-1.695 1.172-.154.665.38 1.217 1.2 1.22V8.9l4.83-.01-8.62 6.617-.034.025c-.813.622-1.075 1.658-.563 2.313.52.667 1.625.668 2.447.004L7.414 14s-.069.52-.063.831zm12.09 1.741c-.97.988-2.326 1.548-3.795 1.55-1.47.004-2.827-.552-3.797-1.538a4.51 4.51 0 0 1-1.036-1.622 4.282 4.282 0 0 1 .282-3.519 4.702 4.702 0 0 1 1.153-1.371c.942-.768 2.141-1.183 3.396-1.185 1.256-.002 2.455.41 3.398 1.175.48.391.87.854 1.152 1.367a4.28 4.28 0 0 1 .522 1.706 4.236 4.236 0 0 1-.239 1.811 4.54 4.54 0 0 1-1.035 1.626"/></svg>
+                      Blender
+                    </span>  
+                  </div>
+                </div> 
+              </div>
+            </div>
+          </div>
+
+          <!-- Block 7 Teaching & Training-->
+          <div id="training" class="content bg-light bg-dark-light-dm m-0 p-20 shadow border-top-transparent border-bottom">
+            
+            <!-- row 1 -->
+            <div class="row">
+              <div class="col-md-12 text-justify Roboto-Light">
+
+                <h2 class="content-title font-size-22 DMSerif-title text-center">
+                  Teaching & Training &#127891
+                </h2>
+    
+                <p class="text-center">
+                  In the last few years I have taught regularly at academic and post-diploma level. 
+                  <br>Among my classes: Computer Art, Video-Editing + Premiere, Painting, Chromatology.
+                  <br>Proudly at Academy of Fine Arts and Media ACME in Milan and IED Como - Accademia Aldo Galli.
+                </p>            
+              </div>              
+            </div>
+            <hr>
+            <!-- row 2 -->
+            <div class="row d-flex justify-content-center pb-20">
+             <img class="school-logo shadow" src="images/logo/accademia-aldo-galli.jpg" alt="IED - Aldo Galli" title="IED - Aldo Galli">
+             <img class="school-logo shadow" src="images/logo/acme.jpeg" alt="ACME" title="ACME">
+            </div>
+          </div>
+
+          <!-- Block 8 Get in touch-->
+          <div class="content m-0 p-20 my-20">
+            <div class="row">
+              <div class="col"></div>
+              <div class="content  text-center col-4">
+                <a href="https://mailchi.mp/991462512628/patrick-tabarelli" target="_blank">
+                  <button class="btn btn-secondary btn-sm btn-block" type="button">Get in Touch <i class="far fa-hand-point-up"></i></button></div>
+                </a>
+              <div class="col"></div>
+            </div>            
+          </div>
+          
+          <!-- Block 9 Footer-->
+          <div style ="border-bottom: solid 1px lightcoral;" class="content bg-gradient-content m-0 px-20 pt-0 pb-5 border-top shadow-inset">
+            <div class="row my-20">
+
+              <!-- left -->
+              <div class="col-md-4">
+                <h2 class="content-title font-size-22 DMSerif-title text-light">
+                  Say Hello! &#128227
+                </h2>
+                <p class="Roboto-Light text-light">
+                  For any enquires 
+                  <br>feel free to get in touch
+                </p>
+                <a href="#sayHi">
+                  <button class="btn btn-sm btn-danger mb-20" type="button">
+                    Contact 
+                  </button>                 
+                </a>
+              </div>
+
+              <!-- middle -->
+              <div class="col-md-4">
+                <div class="content-title mb-20">
+                  <!-- Gmail -->
+                  <a class="mr-10" href="#sayHi" title="gmail">
+                    <svg class="icon" fill="#ED586C" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>Gmail</title><path d="M24 4.5v15c0 .85-.65 1.5-1.5 1.5H21V7.387l-9 6.463-9-6.463V21H1.5C.649 21 0 20.35 0 19.5v-15c0-.425.162-.8.431-1.068C.7 3.16 1.076 3 1.5 3H2l10 7.25L22 3h.5c.425 0 .8.162 1.069.432.27.268.431.643.431 1.068z"></path></svg>
+                  </a>
+                  <!-- Whatsapp -->
+                  <a class="mx-10" href="https://wa.me/00393496920555" target="_blank" title="WhatsApp">
+                    <svg class="icon" fill="#ED586C" role="img" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><title>WhatsApp</title><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path></svg>
+                  </a>
+                  <!-- Telegram -->
+                  <a class="ml-10" href="https://telegram.me/patricktabar" target="_blank" title="Telegram">
+                    <svg class="icon" fill="#ED586C" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><title>Telegram</title><path d="M23.91 3.79L20.3 20.84c-.25 1.21-.98 1.5-2 .94l-5.5-4.07-2.66 2.57c-.3.3-.55.56-1.1.56-.72 0-.6-.27-.84-.95L6.3 13.7l-5.45-1.7c-1.18-.35-1.19-1.16.26-1.75l21.26-8.2c.97-.43 1.9.24 1.53 1.73z"></path></svg>
+                  </a>
+                </div>
+                <p class="Roboto-Light text-light">
+                  <a class="text-light" href="#sayHi">@ patrick tabarelli</a>
+                  <br>+39 349 69 20 555
+                  <br>P.IVA 11023020966
+                </p>
+              </div>
+
+              <!-- rigth -->
+              <div class="col-md-4">                              
+                <p>
+                  <ul class="Roboto-Light text-light font-size-10">
+                    <li class="list-item">
+                      <a href="#top" class="nav-footer text-light">
+                        About Me
+                      </a>
+                    </li>
+                    <li class="list-item">
+                      <a href="#visual" class="nav-footer text-light">
+                        Visual Design
+                      </a>
+                    </li>
+                    <li class="list-item">
+                      <a href="#webdev" class="nav-footer text-light">
+                        Web Development
+                      </a>
+                    </li>
+                    <li class="list-item">
+                      <a href="#coding" class="nav-footer text-light">
+                        Coding
+                      </a>
+                    </li>
+                    <li class="list-item">
+                      <a href="#motion" class="nav-footer text-light">
+                        3D + Motion
+                      </a>
+                    </li>
+                    <li class="list-item">
+                      <a href="#training" class="nav-footer text-light">
+                        Teaching & Training
+                      </a>
+                    </li>
+                    <li class="list-item">
+                      <a href="#" class="nav-footer text-light">
+                        Contact
+                      </a>
+                    </li>
+                  </ul>        
+                </p>
+              </div>                           
+            </div>
+            <div class="row ">
+              <div class="content text-center col-12 m-0 mt-5">
+                <span style="font-size:1.4rem" class="Baloo">
+                  patrick tabarelli
+                </span> 
+                <i class="fab fa-confluence pl-10 logo-color" aria-hidden="true"></i>
+              </div>
+            </div>
+          </div>
+
+          <!-- Block 10 Secondary Footer-->
+          <div class="content bg-transparent my-0">
+            
+            <!-- row 1 -->
+            <div class="row">
+              <div style="font-size: 1rem; color: white;" class="col-md-12 text-center Roboto-Light">    
+                <p class="text-center">
+                  designed with
+                  <i class="fa fa-heart text-danger ml-5 mr-5" aria-hidden="true"></i>
+                  with
+                  <i class="fab fa-html5 ml-5 mr-5"></i>
+                  <i class="fab fa-css3-alt ml-5 mr-5"></i>
+                  <i class="fab fa-js ml-5 mr-5"></i>
+                  &               
+                  <img class="ml-5 mr-5" style="height: 1rem; padding-top: 2px;" src="images/icons/halfmoon.svg" alt="">
+                </p>            
+              </div>              
+            </div>            
+          </div>
+          
+        </div>
+      </div>
+      <!-- Content wrapper end -->
+    </div>
+    <!-- Page wrapper end -->
+
+    <!-- Halfmoon JS -->
+    <script src="https://cdn.jsdelivr.net/gh/halfmoonui/halfmoon@1.0.4/js/halfmoon.min.js"></script>
+   
+    <!-- Custom JS -->
+    <script type="text/javascript" src="app.js"></script>  
+
+  </body>
+</html>
