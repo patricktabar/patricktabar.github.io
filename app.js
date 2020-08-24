@@ -40,5 +40,9 @@ function confirm() {
 }
 
 function hideCookieAlert() {
-  cookie.classList.add("d-none");
+  cookie.classList.add("dispose");
 }
+
+window.setTimeout(function () {
+  hideCookieAlert();
+}, 5000);
