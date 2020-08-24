@@ -43,6 +43,6 @@ function hideCookieAlert() {
   cookie.classList.add("dispose");
 }
 
-window.onload = window.setTimeout(function () {
+window.setTimeout(function () {
   hideCookieAlert();
 }, 5000);
